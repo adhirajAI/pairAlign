@@ -1,0 +1,39 @@
+[project]
+name = "w2t-std"
+version = "0.1.0"
+description = "PairAlign audio sequence tokenization"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "causal-conv1d==1.5.0.post8",
+    "datasets",
+    "einops>=0.8.1",
+    "faiss-cpu>=1.13.2",
+    "g2p-en>=2.1.0",
+    "h5py>=3.14.0",
+    "huggingface-hub>=0.36.2",
+    "ipython>=8.38.0",
+    "levenshtein>=0.27.3",
+    "librosa>=0.11.0",
+    "lightning==2.5.1",
+    "mamba-ssm==2.2.4",
+    "matplotlib>=3.10.6",
+    "npy-append-array>=0.9.19",
+    "pandas",
+    "phonemizer>=3.3.0",
+    "pot>=0.9.6.post1",
+    "propcache>=0.4.1",
+    "rapidfuzz>=3.14.3",
+    "rich==13.9.4",
+    "speechbrain",
+    "tensorboard>=2.20.0",
+    "torch==2.5.1",
+    "torch-ema>=0.3",
+    "torchaudio==2.5.1",
+    "torchcodec>=0.11.1",
+    "torchvision==0.20.1",
+    "transformers==4.38.2",
+    "tslearn>=0.6.4",
+    "vector-quantize-pytorch>=1.28.0",
+]
+

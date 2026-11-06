@@ -1,0 +1,75 @@
+# PairAlign training configuration.
+# Replace the data/checkpoint paths below with local paths before training.
+
+seed: 240
+validation_seed: 1234
+model_name: AudioTokenizer
+run_name: pairalign
+checkpoint: null
+
+train:
+  dataset_csv: data/train.csv
+  noise_dir_path: null
+
+valid:
+  dataset_csv: data/valid.csv
+  noise_dir_path: null
+
+test:
+  dataset_csv: data/test.csv
+  noise_dir_path: null
+
+data:
+  add_noise: true
+  # Disabled by default. When enabled, only the positive view is mildly
+  # time-compressed and right-padded back to the fixed 3-second context.
+  use_time_compression: false
+
+# Input audio
+seglen: 3.0
+fs: 16000
+feats_type: melspectrogram
+n_mels: 96
+win_size: 0.025
+win_hop: 0.010
+
+# DataLoader
+batchsize: 16
+load_workers: 30
+
+# Mamba encoder
+d_model: 96
+d_project: 512
+d_state: 128
+d_conv: 4
+expand: 8
+n_layer: 8
+headdim: 48
+block_type: mamba2
+
+# Stage-I objective / quantizer
+temperature: 0.2
+num_codewords: 512
+codeword_dims: 512
+beta: 0.1
+ema_decay: 0.7
+ortho_weight: 0
+add_robust_codes_loss: true
+cost_factors:
+  triplet_loss: 1.0
+  vq_loss: 1.0
+  codes_loss: 10.0
+
+# Optimization
+optimizer: adam
+lr: 0.00005
+wt_decay: 0.0001
+lr_scheduler: true
+
+# Stage initialization.
+# AudioTokenizerARPrior requires checkpoints.stage1.
+# AudioTokenizerAR_FINAL requires checkpoints.stage2 (or checkpoints.ar_prior).
+checkpoints:
+  stage1: null
+  stage2: null
+  ar_prior: null

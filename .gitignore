@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+checkpoints/
+lightning_logs/
+retrieval_logs/
+pretrained_ssl/
